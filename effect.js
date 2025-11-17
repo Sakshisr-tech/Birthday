@@ -3,6 +3,25 @@ $(window).load(function(){
 	$('.container').fadeIn('fast');
 });
 $('document').ready(function(){
+	// Set to true to automatically run the full sequence (turn on -> play -> banner -> balloons -> cake -> candle -> wish -> story)
+	var autoPlay = true;
+
+	if (autoPlay) {
+		// Start after load/fade-in (give loading a moment)
+		setTimeout(function(){
+			$('#turn_on').trigger('click');
+		}, 1000);
+
+		// approximate timings to follow the original chained delays
+		setTimeout(function(){ $('#play').trigger('click'); }, 7000);       // after turn_on fades and shows play
+		setTimeout(function(){ $('#bannar_coming').trigger('click'); }, 14000); // after play sequence
+		setTimeout(function(){ $('#balloons_flying').trigger('click'); }, 21000); // after banner comes
+		setTimeout(function(){ $('#cake_fadein').trigger('click'); }, 30000); // after balloons fly
+		setTimeout(function(){ $('#light_candle').trigger('click'); }, 34000); // light candle
+		setTimeout(function(){ $('#wish_message').trigger('click'); }, 35500); // arrange balloons + show letters
+		setTimeout(function(){ $('#story').trigger('click'); }, 39500); // start message/story
+	}
+
 		var vw;
 		$(window).resize(function(){
 			 vw = $(window).width()/2;
